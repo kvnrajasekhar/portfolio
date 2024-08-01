@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinIcon from "../../../public/linkedin-icon.svg";
 import Link from "next/link";
@@ -8,20 +8,19 @@ import Image from "next/image";
 const ContactSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // const email = e.target.email.value;
     const subject = e.target.subject.value;
     const message = e.target.message.value;
 
-    const mailtoURL = `https://mail.google.com/mail/?view=cm&fs=1&to=kanagalavnrajasekhar@gmail.com&su=${subject}&body=${message}`;
-
-    // Open the mailto URL in a new tab
-    window.open(mailtoURL, '_blank');
+    if (typeof window !== "undefined") {
+      const mailtoURL = `https://mail.google.com/mail/?view=cm&fs=1&to=kanagalavnrajasekhar@gmail.com&su=${subject}&body=${message}`;
+      window.open(mailtoURL, '_blank');
+    }
 
     setEmailSubmitted(true);
-    e.preventDefault();
   };
 
   return (
@@ -36,7 +35,7 @@ const ContactSection = () => {
         </h5>
         <p className="text-[#ADB7BE] mb-4 max-w-md">
           I am always open to connecting with like-minded professionals, enthusiasts, and potential collaborators.
-          If you share an interest in web development, DevOps, or simply want to exchange ideas, feel free to reach out!.
+          If you share an interest in web development, DevOps, or simply want to exchange ideas, feel free to reach out!
         </p>
         <div className="socials flex flex-row gap-2">
           <Link href="https://github.com/kvnrajasekhar/">
