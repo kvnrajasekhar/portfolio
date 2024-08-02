@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinIcon from "../../../public/linkedin-icon.svg";
 import Link from "next/link";
@@ -10,11 +10,17 @@ const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const subject = e.target.subject.value;
     const message = e.target.message.value;
 
-    const mailtoURL = `https://mail.google.com/mail/?view=cm&fs=1&to=kanagalavnrajasekhar@gmail.com&su=${subject}&body=${message}`;
-    window.open(mailtoURL, "_blank");
+    const mailtoURL = `mailto:kanagalavnrajasekhar@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+
+    // Create a temporary anchor element and trigger the click
+    const tempAnchor = document.createElement("a");
+    tempAnchor.href = mailtoURL;
+    tempAnchor.target = "_blank";
+    tempAnchor.click();
 
     setEmailSubmitted(true);
   };
@@ -111,4 +117,3 @@ const ContactSection = () => {
 };
 
 export default ContactSection;
-
