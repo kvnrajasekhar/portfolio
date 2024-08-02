@@ -15,10 +15,9 @@ const ContactSection = () => {
     const subject = e.target.subject.value;
     const message = e.target.message.value;
 
-    if (typeof window !== "undefined") {
       const mailtoURL = `https://mail.google.com/mail/?view=cm&fs=1&to=kanagalavnrajasekhar@gmail.com&su=${subject}&body=${message}`;
       window.open(mailtoURL, '_blank');
-    }
+    
 
     setEmailSubmitted(true);
   };
