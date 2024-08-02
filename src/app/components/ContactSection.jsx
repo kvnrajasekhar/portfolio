@@ -8,16 +8,13 @@ import Image from "next/image";
 const ContactSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const subject = e.target.subject.value;
     const message = e.target.message.value;
 
-      const mailtoURL = `https://mail.google.com/mail/?view=cm&fs=1&to=kanagalavnrajasekhar@gmail.com&su=${subject}&body=${message}`;
-      window.open(mailtoURL, '_blank');
-    
+    const mailtoURL = `https://mail.google.com/mail/?view=cm&fs=1&to=kanagalavnrajasekhar@gmail.com&su=${subject}&body=${message}`;
+    window.open(mailtoURL, "_blank");
 
     setEmailSubmitted(true);
   };
@@ -33,22 +30,24 @@ const ContactSection = () => {
           Let&apos;s Connect
         </h5>
         <p className="text-[#ADB7BE] mb-4 max-w-md">
-          I am always open to connecting with like-minded professionals, enthusiasts, and potential collaborators.
-          If you share an interest in web development, DevOps, or simply want to exchange ideas, feel free to reach out!
+          I am always open to connecting with like-minded professionals,
+          enthusiasts, and potential collaborators. If you share an interest in
+          web development, DevOps, or simply want to exchange ideas, feel free
+          to reach out!
         </p>
         <div className="socials flex flex-row gap-2">
           <Link href="https://github.com/kvnrajasekhar/">
-            <Image src={GithubIcon} alt="Github Icon" />
+            <Image src={GithubIcon} alt="Github" />
           </Link>
           <Link href="https://linkedin.com/in/kvnrs23">
-            <Image src={LinkedinIcon} alt="Linkedin Icon" />
+            <Image src={LinkedinIcon} alt="LinkedIn" />
           </Link>
         </div>
       </div>
       <div>
         {emailSubmitted ? (
           <p className="text-green-500 text-sm mt-2">
-            Mail sent successfully!...
+            Mail sent successfully!
           </p>
         ) : (
           <form className="flex flex-col" onSubmit={handleSubmit}>
